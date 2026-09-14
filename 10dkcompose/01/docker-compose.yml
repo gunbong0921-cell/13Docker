@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  apache-service: 
+    container_name: edu16apache
+    image: httpd
+    ports:
+      - "8016:80"
+    restart: always

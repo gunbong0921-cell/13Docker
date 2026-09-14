@@ -1,0 +1,62 @@
+# compose 문법을 3.8로 지정해서 사용한다는 의미
+# 현재 시점에서는 삭제해도 된다. 
+version: '3.8'
+
+# 도커컴포즈에서 실행할 서비스를 의미 
+services:
+  # 1. MariaDB 서비스 설정(이름은 개발자가 직접 정의)
+  db-server:
+    # 컨테이너 이름을 지정(--name 옵션)
+    container_name: edu17mariadb
+    # 컨테이너 이미지를 지정(도커 허브에서 Pulling 할때의 이름) 
+    image: mariadb
+    # 포트 포워딩(호스트포트:컨테이너포트) 
+    ports:
+      - "3307:3306"
+    # 볼륨 : 마리아DB의 데이터를 저장할 볼륨명 지정 
+    # 볼륨명은 하위 volumes 항목에서 생성한다.  
+    volumes:
+      - vol02mariadb:/var/lib/mysql
+    # 네트워크 : 마리아DB와 워드프레스 연결을 위한 네트워크 지정 
+    # 이 항목도 하위에서 생성한다.  
+    networks:
+      - net02mariawp
+    # 마리아DB 환경변수 설정.  
+    environment:
+      MARIADB_ROOT_PASSWORD: "123456" # 루트 패스워드
+      MARIADB_DATABASE: "wpdb" # 데이터베이스명
+      MARIADB_USER: "wpuser" # 사용자명
+      MARIADB_PASSWORD: "1234" # 사용자 패스워드 
+
+  # 2. WordPress 서비스 설정
+  wordpress-app:
+    container_name: edu18wp
+    image: wordpress
+    ports:
+      - "8018:80"
+    volumes:
+      - vol03wordpress:/var/www/html
+    networks:
+      - net02mariawp
+    # 워드프레스는 마리아DB에 의존하므로 어떤 DB컨테이너를 사용할지 결정    
+    environment:
+      WORDPRESS_DB_HOST: edu17mariadb
+      WORDPRESS_DB_NAME: wpdb
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: "1234"
+    # 워드프레스 컨테이너를 실행하기 전에 마리아DB 컨테이너를 먼저 실행    
+    depends_on:
+      # 서비스명으로 지정 
+      - db-server
+
+# 3. 볼륨 정의
+volumes:
+  vol02mariadb:
+  vol03wordpress:
+
+# 4. 네트워크 정의
+networks:
+  # 마리아DB와 워드프레스가 통신할 네트워크
+  net02mariawp:
+    # bridge 네트워크 사용 
+    driver: bridge
