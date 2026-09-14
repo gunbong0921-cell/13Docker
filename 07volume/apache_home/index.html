@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lim · 자기소개</title>
+  <meta name="description" content="문제를 구조로 풀고, 코드를 경험으로 남기는 개발자 Lim의 자기소개 홈페이지입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1110;
+      --bg-2: #151b19;
+      --paper: #f4efe6;
+      --ink: #161714;
+      --muted: #8b938e;
+      --line: rgba(244, 239, 230, 0.12);
+      --accent: #c45c26;
+      --accent-soft: #e8b089;
+      --sage: #8aa58a;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      --radius: 22px;
+      --nav-h: 76px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--paper);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+    .grain {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 8;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: var(--nav-h);
+      backdrop-filter: blur(16px);
+      background: rgba(13, 17, 16, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-soft);
+      display: grid;
+      place-items: center;
+      color: var(--accent-soft);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 1px;
+      background: var(--accent-soft);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--paper);
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--paper);
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.45;
+    }
+
+    .orb-a {
+      width: 380px;
+      height: 380px;
+      background: #3a4a3a;
+      top: 8%;
+      left: -80px;
+    }
+
+    .orb-b {
+      width: 280px;
+      height: 280px;
+      background: #7a3a1e;
+      right: -40px;
+      bottom: 10%;
+    }
+
+    .hero-grid {
+      width: min(1180px, calc(100% - 40px));
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+      padding: 48px 0 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--sage);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(52px, 8vw, 92px);
+      line-height: 0.95;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent-soft);
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 520px;
+      color: #c9cfc9;
+      font-weight: 300;
+      font-size: 17px;
+    }
+
+    .typed {
+      min-height: 1.7em;
+      color: var(--paper);
+      font-weight: 400;
+    }
+
+    .typed-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.05em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: -3px;
+      animation: blink 0.9s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(244, 239, 230, 0.08), rgba(244, 239, 230, 0.03));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait {
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 30% 20%, #e8b089 0%, transparent 32%),
+        linear-gradient(160deg, #2b3732, #111614 55%, #3a2418);
+      display: grid;
+      place-items: end start;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait-initial {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 180px;
+      color: rgba(244, 239, 230, 0.08);
+      letter-spacing: -0.08em;
+    }
+
+    .portrait-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .portrait-meta small {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    .portrait-meta strong {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: rgba(13, 17, 16, 0.45);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .stat span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.05;
+    }
+
+    .section-note {
+      color: var(--muted);
+      max-width: 340px;
+      font-size: 14px;
+    }
+
+    .about {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+    }
+
+    .about p {
+      color: #3f433f;
+      margin-bottom: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .chip {
+      border: 1px solid rgba(22, 23, 20, 0.14);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .about-quote {
+      background: #161714;
+      color: var(--paper);
+      border-radius: 28px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .about-quote p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.25;
+      color: var(--paper);
+      margin: 0;
+    }
+
+    .about-quote span {
+      margin-top: 28px;
+      color: var(--accent-soft);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .skill {
+      margin-bottom: 16px;
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #d7ddd7;
+    }
+
+    .bar {
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(244, 239, 230, 0.08);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      transition: width 1s ease;
+    }
+
+    .timeline {
+      list-style: none;
+    }
+
+    .timeline li {
+      padding: 0 0 22px 18px;
+      border-left: 1px solid var(--line);
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: -5px;
+      top: 6px;
+    }
+
+    .timeline strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .timeline small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: rgba(232, 176, 137, 0.45);
+    }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    .project h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      font-weight: 500;
+      margin: 12px 0 8px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+
+    .contact-info {
+      padding: 40px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(196, 92, 38, 0.28), transparent 40%),
+        #121716;
+    }
+
+    .contact-info h2 {
+      margin: 10px 0 16px;
+    }
+
+    .contact-info p,
+    .contact-info a {
+      color: #c9cfc9;
+      font-size: 15px;
+    }
+
+    .contact-links {
+      margin-top: 28px;
+      display: grid;
+      gap: 10px;
+    }
+
+    form {
+      padding: 40px;
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 6px;
+      background: #0d1110;
+      border: 1px solid var(--line);
+      color: var(--paper);
+      border-radius: 14px;
+      padding: 12px 14px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent-soft);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 40;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 14px 18px;
+      border-radius: 16px;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: rise 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.24s; }
+    .delay-3 { animation-delay: 0.36s; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .bento,
+      .projects,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: rgba(13, 17, 16, 0.96);
+        padding: 24px;
+        border-bottom: 1px solid var(--line);
+        align-items: flex-start;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#top">
+        <span class="logo-mark">L</span>
+        LIM
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#work">경험</a></li>
+        <li><a href="#projects">작업</a></li>
+        <li><a href="#contact">연락</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Let's Talk</a>
+      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow reveal">Portfolio · 2026</p>
+          <h1 class="reveal delay-1">코드를 넘어<br /><em>구조를 설계합니다.</em></h1>
+          <p class="hero-copy reveal delay-2">
+            안녕하세요, 개발자 <strong>Lim</strong>입니다.<br />
+            <span class="typed" id="typed"></span><span class="typed-cursor"></span>
+          </p>
+          <div class="hero-actions reveal delay-3">
+            <a class="btn btn-primary" href="#projects">작업 살펴보기</a>
+            <a class="btn btn-ghost" href="#contact">인사 건네기</a>
+          </div>
+        </div>
+        <aside class="hero-card reveal delay-2">
+          <div class="portrait">
+            <div class="portrait-initial">L</div>
+            <div class="portrait-meta">
+              <small>BASED IN SEOUL</small>
+              <strong>Lim · Developer</strong>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>3+</b><span>Years</span></div>
+            <div class="stat"><b>12</b><span>Projects</span></div>
+            <div class="stat"><b>8</b><span>Stacks</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>사람을 위한<br />시스템을 만듭니다.</h2>
+          <p class="section-note">복잡한 요구를 단순한 흐름으로 바꾸고, 유지보수되기 쉬운 코드를 남기는 일을 좋아합니다.</p>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p>백엔드와 인프라를 중심으로, 웹 서비스가 실제로 돌아가게 만드는 일에 집중하고 있습니다. Docker로 환경을 고정하고, 데이터가 오가는 길을 명확히 그리는 것이 제 작업 방식입니다.</p>
+            <p>화려한 기능보다 읽히는 구조, 설명 가능한 결정을 더 중요하게 봅니다. 같이 일하는 사람이 편하게 이어받을 수 있는 결과물을 목표로 합니다.</p>
+            <div class="chips">
+              <span class="chip">Java / Spring</span>
+              <span class="chip">Docker</span>
+              <span class="chip">MariaDB</span>
+              <span class="chip">REST API</span>
+              <span class="chip">Linux</span>
+            </div>
+          </div>
+          <blockquote class="about-quote">
+            <p>“작동하는 코드보다, 내일도 이해할 수 있는 코드를 남기고 싶습니다.”</p>
+            <span>LIM · PERSONAL PRINCIPLE</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>경험과 역량</h2>
+          <p class="section-note">서비스가 배포되고 운영되는 지점까지 책임지는 개발자가 되고 싶습니다.</p>
+        </div>
+        <div class="bento">
+          <article class="card">
+            <h3>Skills</h3>
+            <div class="skill">
+              <div class="skill-top"><span>Backend</span><span>88%</span></div>
+              <div class="bar"><span data-width="88%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Docker / Infra</span><span>82%</span></div>
+              <div class="bar"><span data-width="82%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Database</span><span>76%</span></div>
+              <div class="bar"><span data-width="76%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="skill-top"><span>Frontend</span><span>64%</span></div>
+              <div class="bar"><span data-width="64%"></span></div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Timeline</h3>
+            <ul class="timeline">
+              <li>
+                <strong>클라우드 기반 웹 서비스 과정</strong>
+                <small>2026 · Docker, CI, 배포 환경 학습</small>
+              </li>
+              <li>
+                <strong>팀 프로젝트 백엔드 리드</strong>
+                <small>REST API 설계 · DB 모델링</small>
+              </li>
+              <li>
+                <strong>자기소개 웹 포트폴리오</strong>
+                <small>단일 페이지 인터랙션 설계</small>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>최근 작업</h2>
+          <p class="section-note">작은 서비스라도 처음부터 끝까지 연결해 보는 것을 중요하게 생각합니다.</p>
+        </div>
+        <div class="projects">
+          <article class="card project">
+            <div>
+              <span class="tag">Web</span>
+              <h3>Intro Site</h3>
+              <p>한 장의 HTML에 구조, 스타일, 동작을 담아 만든 자기소개 메인 페이지입니다.</p>
+            </div>
+          </article>
+          <article class="card project">
+            <div>
+              <span class="tag">Infra</span>
+              <h3>MariaDB Box</h3>
+              <p>컨테이너로 데이터베이스를 띄우고, 포트와 볼륨을 분리해 재현 가능한 환경을 구성했습니다.</p>
+            </div>
+          </article>
+          <article class="card project">
+            <div>
+              <span class="tag">API</span>
+              <h3>Member API</h3>
+              <p>회원 도메인을 기준으로 CRUD와 예외 처리를 정리한 REST 연습 프로젝트입니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-info">
+            <p class="eyebrow">Contact</p>
+            <h2>다음 이야기를<br />기다리고 있습니다.</h2>
+            <p>협업, 피드백, 가벼운 인사 모두 환영합니다. 메일을 남겨 주시면 확인하는 대로 답장하겠습니다.</p>
+            <div class="contact-links">
+              <a href="mailto:lim@example.com">lim@example.com</a>
+              <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+              <span>Seoul, Republic of Korea</span>
+            </div>
+          </div>
+          <form id="contactForm">
+            <div>
+              <label for="name">이름</label>
+              <input id="name" name="name" required placeholder="홍길동" />
+            </div>
+            <div>
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com" />
+            </div>
+            <div>
+              <label for="message">메시지</label>
+              <textarea id="message" name="message" required placeholder="안녕하세요, Lim님."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">메시지 보내기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="wrap">
+    <footer>
+      <span>© 2026 Lim. All rights reserved.</span>
+      <span>Built as a single-file homepage.</span>
+    </footer>
+  </div>
+  <div class="toast" id="toast">메시지를 남겨 주셔서 감사합니다.</div>
+
+  <script>
+    (function () {
+      const phrases = [
+        "문제를 구조로 풀고, 코드를 경험으로 남깁니다.",
+        "Docker로 환경을 고정하고, 서비스가 흐르게 만듭니다.",
+        "읽히는 설계가 곧 좋은 협업이라고 믿습니다."
+      ];
+
+      const typedEl = document.getElementById("typed");
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function typeLoop() {
+        const current = phrases[phraseIndex];
+        typedEl.textContent = current.slice(0, charIndex);
+
+        if (!deleting && charIndex < current.length) {
+          charIndex += 1;
+          setTimeout(typeLoop, 46);
+          return;
+        }
+
+        if (!deleting && charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1600);
+          return;
+        }
+
+        if (deleting && charIndex > 0) {
+          charIndex -= 1;
+          setTimeout(typeLoop, 24);
+          return;
+        }
+
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeLoop, 280);
+      }
+
+      typeLoop();
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", function () {
+        navLinks.classList.toggle("open");
+      });
+
+      navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("open");
+        });
+      });
+
+      const sections = document.querySelectorAll("section[id]");
+      const navAnchors = document.querySelectorAll(".nav-links a");
+
+      function highlightNav() {
+        let current = "";
+        sections.forEach(function (section) {
+          if (window.scrollY >= section.offsetTop - 140) {
+            current = section.id;
+          }
+        });
+        navAnchors.forEach(function (anchor) {
+          anchor.classList.toggle("active", anchor.getAttribute("href") === "#" + current);
+        });
+      }
+
+      window.addEventListener("scroll", highlightNav);
+      highlightNav();
+
+      const bars = document.querySelectorAll(".bar span");
+      const skillObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.getAttribute("data-width");
+            skillObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      bars.forEach(function (bar) {
+        skillObserver.observe(bar);
+      });
+
+      const form = document.getElementById("contactForm");
+      const toast = document.getElementById("toast");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        toast.classList.add("show");
+        form.reset();
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2400);
+      });
+    })();
+  </script>
+</body>
+</html>
