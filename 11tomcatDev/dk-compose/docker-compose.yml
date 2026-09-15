@@ -1,0 +1,84 @@
+# 컴포즈 버전 지정
+# version: '3.8'
+# 서비스 정의 
+# services:
+    # 오라클 서비스 정의
+#   myOracle03:
+      # 이미지명
+#     image: gvenzl/oracle-xe
+      # 컨테이너명
+#     container_name: myOracle03
+      # 포트포워딩명
+#     ports:
+#       - "1533:1521"
+      # 환경변수설정 : 루트패스워드만 지정
+#     environment:
+#       - ORACLE_PASSWORD=123456
+      # 볼륨마운트(볼륨은 하위에서 생성함) 
+#     volumes:
+#       - myOracleVol:/opt/oracle/oradata
+      # 네트워크 지정(네트워크는 하위에서 생성함)
+#     networks:
+#       - myNetwork
+    # 톰캣 서비스 정의
+#   myTomcat03:
+#     image: tomcat:11.0.25-jdk21-temurin-noble
+#     container_name: myTomcat03
+#     ports:
+#       - "8083:8080"
+      # 바인드마운트 : 작업폴더의 tomcat_mount폴더에 바인딩 
+      # docker-compose.yml 파일의 위치에 따라 상대경로가 달라짐
+      # 만약 위치에 상관없이 동일하게 지정하고 싶다면 아래와 같이 절대경로를 사용  
+      # C:\02Workspaces\13Docker\11tomcatDev\tomcat_mount
+#     volumes:
+#       - ..\tomcat_mount:/usr/local/tomcat/webapps
+#     networks:
+#       - myNetwork
+  # 볼륨 생성
+# volumes:
+#   myOracleVol:
+#     name: myOracleVol
+  # 네트워크 생성
+# networks:
+#   myNetwork:
+#     name: myNetwork
+
+
+version: '3.8'
+
+services:
+  db-server:
+    container_name: myOracle03
+    image: gvenzl/oracle-xe
+    ports:
+      - "1533:1521"
+    volumes:
+      - myOracleVol:/opt/oracle/oradata
+    networks:
+      - myNetwork
+    environment:
+      ORACLE_PASSWORD: "123456"
+      ORACLE_PDB: "XEPDB1"
+      APP_USER: "boot_user"
+      APP_USER_PASSWORD: "1234"
+
+  web-server:
+    container_name: myTomcat03
+    image: tomcat:11.0.25-jdk21-temurin-noble
+    ports:
+      - "8083:8080"
+    volumes:
+      - ../tomcat_mount:/usr/local/tomcat/webapps
+    networks:
+      - myNetwork
+    depends_on:
+      - db-server
+
+networks:
+  myNetwork:
+    name: myNetwork
+    driver: bridge
+
+volumes:
+  myOracleVol:
+    name: myOracleVol

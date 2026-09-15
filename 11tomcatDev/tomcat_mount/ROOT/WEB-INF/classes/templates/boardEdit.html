@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>게시판 글 수정</title><link rel="stylesheet" th:href="@{/commons/style.css}"></head>
+<body>
+    <h2>JPA Board</h2>
+    <form method="post" th:action="@{/editProc.do}" th:if="${row != null}">
+        <input type="hidden" name="idx" th:value="${row.idx}">
+        <input type="hidden" name="hits" th:value="${row.hits}">
+        <input type="hidden" name="postdate" th:value="${row.postdate}">
+        <div class="board write-view"><table><tbody>
+            <tr><th>작성자</th><td><input type="text" name="name" th:value="${row.name}" style="width:200px;"></td></tr>
+            <tr><th>제목</th><td><input type="text" name="title" placeholder="제목을 입력하세요" th:value="${row.title}"></td></tr>
+            <tr><th>내용</th><td><textarea name="contents" rows="10" placeholder="내용을 입력하세요" th:text="${row.contents}"></textarea></td></tr>
+        </tbody></table></div>
+        <div class="form-actions"><button type="submit">수정</button><button type="reset">취소</button><button type="button" th:onclick="|location.href='@{/list.do}'|">목록</button></div>
+    </form>
+    <p th:unless="${row != null}">게시물을 찾을 수 없습니다.</p>
+</body>
+</html>

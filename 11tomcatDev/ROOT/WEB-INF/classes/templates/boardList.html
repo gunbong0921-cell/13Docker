@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 목록</title><link rel="stylesheet" th:href="@{/commons/style.css}">
+</head>
+<body>
+    <h2>JPA Board</h2>
+    <div class="board">
+    <table>
+        <thead><tr><th>No</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr></thead>
+        <tbody>
+            <tr th:each="row : ${rows}">
+                <td th:text="${row.idx}">1</td>
+                <td class="bo_title"><a th:href="@{/view.do(idx=${row.idx})}" th:text="${row.title}">제목</a></td>
+                <td th:text="${row.name}">작성자</td>
+                <td th:text="${#temporals.format(row.postdate, 'yyyy-MM-dd')}">2026-01-01</td>
+                <td th:text="${row.hits}">0</td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(rows)}"><td colspan="5">등록된 게시물이 없습니다.</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <nav class="page-number" th:if="${totalPages > 0}">
+        <a th:if="${previousBlockPage >= 1}" th:href="@{/list.do(pageNum=1, searchWord=${searchWord})}"><img th:src="@{/images/paging1.gif}" alt="첫 페이지"></a>
+        <a th:if="${previousBlockPage >= 1}" th:href="@{/list.do(pageNum=${previousBlockPage}, searchWord=${searchWord})}"><img th:src="@{/images/paging2.gif}" alt="이전"></a>
+        <span th:each="page : ${pageNumbers}"><strong th:if="${page == currentPage}" th:text="${page}">1</strong><a th:unless="${page == currentPage}" th:href="@{/list.do(pageNum=${page}, searchWord=${searchWord})}" th:text="${page}">1</a></span>
+        <a th:if="${nextBlockPage <= totalPages}" th:href="@{/list.do(pageNum=${nextBlockPage}, searchWord=${searchWord})}"><img th:src="@{/images/paging3.gif}" alt="다음"></a>
+        <a th:if="${nextBlockPage <= totalPages}" th:href="@{/list.do(pageNum=${totalPages}, searchWord=${searchWord})}"><img th:src="@{/images/paging4.gif}" alt="마지막 페이지"></a>
+    </nav>
+    <div class="form-actions"><button type="button" th:onclick="|location.href='@{/write.do}'|">작성</button></div>
+</body>
+</html>

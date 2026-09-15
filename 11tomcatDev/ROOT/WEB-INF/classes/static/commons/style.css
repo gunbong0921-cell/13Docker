@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column; /* 세로 방향 정렬 */
+  justify-content: flex-start;
+  align-items: center; /* 모든 요소를 중앙에 정렬 */
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+h2 {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ==========================================
+   공통 레이아웃 (가로 80%, 최대 1000px 통일)
+   ========================================== */
+.board, form {
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* form 내부의 .board는 parent(form)의 100%를 차지 */
+form .board {
+  width: 100%;
+}
+
+.board {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;  
+}
+
+thead {
+  background-color: #f8f8f8;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+td.bo_title {
+  text-align: left;
+}
+
+/* 목록/상세 보기용 테이블 헤더 기본 스타일 */
+thead th {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+tbody td,
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* 상세 보기 스타일 */
+.detail-view th {
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: bold;
+  border-right: 1px solid #ddd;
+}
+
+.detail-view td {
+  background-color: #fff;
+  text-align: left;
+}
+
+/* 목록 및 상세용 너비 고정 (쓰기 페이지 제외) */
+.board:not(.write-view) tbody tr th:first-child,
+.board:not(.write-view) tbody tr td:first-child,
+.board:not(.write-view) tbody tr th:nth-child(3),
+.board:not(.write-view) tbody tr td:nth-child(3) {
+  width: 100px;
+}
+
+/* ==========================================
+   글쓰기 페이지 전용 (write-view) 스타일
+   ========================================== */
+.write-view tbody tr:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.write-view tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.write-view th {
+  width: 120px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.write-view td {
+  background-color: #fff;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.write-view input[type="text"],
+.write-view input[type="password"],
+.write-view textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.write-view textarea {
+  resize: vertical;
+}
+
+/* 버튼 및 페이징 하단 영역 */
+.form-actions {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-actions button:hover {
+  background-color: #555;
+}
+
+.page-number {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+  color: #b5b5b5;
+  text-decoration: underline;
+}
